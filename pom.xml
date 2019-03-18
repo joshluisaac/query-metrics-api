@@ -11,9 +11,17 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<etl.version>0.0.1-SNAPSHOT</etl.version>
 	</properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>com.kollect.etl</groupId>
+			<artifactId>etl-utils</artifactId>
+			<version>${etl.version}</version>
+			<scope>compile</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.spockframework</groupId>
