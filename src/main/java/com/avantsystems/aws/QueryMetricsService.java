@@ -19,8 +19,7 @@ public class QueryMetricsService {
     }
 
     private static final Logger LOG = LoggerFactory.getLogger(QueryMetrics.class);
-    private static final String REGEX = "(\\d+)-(\\d+)-(\\d+) (\\d+):(\\d+):(\\d+),(\\d+) DEBUG Query";
-    private static final String FILE_NAME = "/home/joshua/Desktop/kollectlogs/ServiceEngine-2018Jun21203756.log";
+
 
 
     public List<String>  processStream(final InputStream inputStream, Predicate<String> predicate) throws IOException {
