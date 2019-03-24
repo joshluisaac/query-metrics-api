@@ -1,4 +1,4 @@
-package com.avantsystems.aws.lamdba;
+package com.avantsystems.aws;
 
 import java.sql.Timestamp;
 
