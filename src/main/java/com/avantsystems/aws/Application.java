@@ -1,19 +1,17 @@
 package com.avantsystems.aws;
 
-import com.avantsystems.aws.DaggerQueryMetricsServiceComponent;
-import com.kollect.etl.util.StringUtils;
-import dagger.Component;
 
-import java.io.File;
-import java.io.FileInputStream;
+import com.avantsystems.aws.components.DaggerQueryMetricsServiceComponent;
+import com.kollect.etl.util.FileUtils;
+import com.kollect.etl.util.JsonUtils;
+import com.kollect.etl.util.StringUtils;
+
+import java.io.*;
+import java.util.List;
 import java.util.function.Predicate;
 
 
-@Component
-interface QueryMetricsServiceComponent {
 
-    QueryMetricsService getQueryMetricsService();
-}
 
 
 public class Application  {
@@ -26,17 +24,20 @@ public class Application  {
         queryMetricsService = DaggerQueryMetricsServiceComponent.create().getQueryMetricsService();
     }
 
-
-    void execute() throws Exception{
-
+    List<String> execute(InputStream inputStream) throws Exception{
         Predicate<String> predicate = s -> new StringUtils().hasMatch(s,REGEX);
-        queryMetricsService.processStream(new FileInputStream(new File(FILE_NAME)),predicate);
+        return queryMetricsService.processStream(inputStream,predicate);
     }
 
 
 
     public static void main(String[] args) throws Exception {
-        new Application().execute();
+        List<String> lines = new Application().execute(new FileInputStream(new File(FILE_NAME)));
+        System.out.println(lines.size());
+        String jsonText = new JsonUtils().toJson(new MetricsMapper().map(lines));
+
+        FileUtils.writeToDataStore(new File("log.json"),jsonText);
+
     }
 
 }
