@@ -2,6 +2,9 @@ package com.avantsystems.aws;
 
 
 import com.avantsystems.aws.components.DaggerQueryMetricsServiceComponent;
+import com.avantsystems.aws.configs.Constants;
+import com.avantsystems.aws.mappers.MetricsMapper;
+import com.avantsystems.aws.services.QueryMetricsService;
 import com.kollect.etl.util.FileUtils;
 import com.kollect.etl.util.JsonUtils;
 import com.kollect.etl.util.StringUtils;
@@ -16,8 +19,7 @@ import java.util.function.Predicate;
 
 public class Application  {
 
-    private static final String REGEX = "(\\d+)-(\\d+)-(\\d+) (\\d+):(\\d+):(\\d+),(\\d+) DEBUG Query";
-    private static final String FILE_NAME = "/home/joshua/Desktop/kollectlogs/ServiceEngine-2018Jun21203756.log";
+
     private QueryMetricsService queryMetricsService;
 
     public Application(){
@@ -25,14 +27,14 @@ public class Application  {
     }
 
     List<String> execute(InputStream inputStream) throws Exception{
-        Predicate<String> predicate = s -> new StringUtils().hasMatch(s,REGEX);
+        Predicate<String> predicate = s -> new StringUtils().hasMatch(s, Constants.REGEX);
         return queryMetricsService.processStream(inputStream,predicate);
     }
 
 
 
     public static void main(String[] args) throws Exception {
-        List<String> lines = new Application().execute(new FileInputStream(new File(FILE_NAME)));
+        List<String> lines = new Application().execute(new FileInputStream(new File(Constants.FILE_NAME)));
         System.out.println(lines.size());
         String jsonText = new JsonUtils().toJson(new MetricsMapper().map(lines));
 

@@ -1,4 +1,4 @@
-package com.avantsystems.aws;
+package com.avantsystems.aws.components;
 
 import javax.inject.Inject;
 import java.io.*;

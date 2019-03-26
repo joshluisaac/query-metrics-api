@@ -1,4 +1,7 @@
-package com.avantsystems.aws;
+package com.avantsystems.aws.mappers;
+
+import com.avantsystems.aws.entities.MetricsMapperBuilder;
+import com.avantsystems.aws.entities.QueryMetrics;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;

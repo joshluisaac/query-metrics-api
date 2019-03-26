@@ -1,4 +1,4 @@
-package com.avantsystems.aws;
+package com.avantsystems.aws.entities;
 
 import java.sql.Timestamp;
 

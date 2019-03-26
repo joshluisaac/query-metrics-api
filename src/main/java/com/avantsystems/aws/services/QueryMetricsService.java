@@ -1,6 +1,8 @@
-package com.avantsystems.aws;
+package com.avantsystems.aws.services;
 
 
+import com.avantsystems.aws.entities.QueryMetrics;
+import com.avantsystems.aws.components.QueryLog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
