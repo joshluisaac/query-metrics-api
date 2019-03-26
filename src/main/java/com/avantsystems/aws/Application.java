@@ -5,9 +5,9 @@ import com.avantsystems.aws.components.DaggerQueryMetricsServiceComponent;
 import com.avantsystems.aws.configs.Constants;
 import com.avantsystems.aws.mappers.MetricsMapper;
 import com.avantsystems.aws.services.IQueryMetricsService;
-import com.kollect.etl.util.FileUtils;
-import com.kollect.etl.util.JsonUtils;
-import com.kollect.etl.util.StringUtils;
+import com.avantsystems.util.FileUtils;
+import com.avantsystems.util.JsonUtils;
+import com.avantsystems.util.StringUtils;
 
 import java.io.*;
 import java.util.List;
