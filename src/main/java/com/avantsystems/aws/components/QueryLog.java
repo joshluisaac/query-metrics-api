@@ -12,6 +12,14 @@ public class QueryLog {
     public QueryLog() {
     }
 
+    /**
+     * Fetches records which matches the specified predicate.
+     *
+     * @param inputStream
+     * @param predicate
+     * @return
+     * @throws IOException
+     */
     public List<String> fetchMatchedRecords(final InputStream inputStream, Predicate<String> predicate) throws IOException {
         try (BufferedReader bufReader = new BufferedReader(
                 new InputStreamReader(inputStream))) {
