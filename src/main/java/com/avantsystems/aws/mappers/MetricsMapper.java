@@ -7,6 +7,10 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Maps/transforms the various log line tokens into {@link QueryMetrics}
+ */
 public class MetricsMapper {
 
     /**
