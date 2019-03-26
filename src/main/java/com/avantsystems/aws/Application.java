@@ -4,7 +4,7 @@ package com.avantsystems.aws;
 import com.avantsystems.aws.components.DaggerQueryMetricsServiceComponent;
 import com.avantsystems.aws.configs.Constants;
 import com.avantsystems.aws.mappers.MetricsMapper;
-import com.avantsystems.aws.services.QueryMetricsService;
+import com.avantsystems.aws.services.IQueryMetricsService;
 import com.kollect.etl.util.FileUtils;
 import com.kollect.etl.util.JsonUtils;
 import com.kollect.etl.util.StringUtils;
@@ -14,13 +14,9 @@ import java.util.List;
 import java.util.function.Predicate;
 
 
-
-
-
 public class Application  {
 
-
-    private QueryMetricsService queryMetricsService;
+    private IQueryMetricsService queryMetricsService;
 
     public Application(){
         queryMetricsService = DaggerQueryMetricsServiceComponent.create().getQueryMetricsService();
@@ -31,15 +27,10 @@ public class Application  {
         return queryMetricsService.processStream(inputStream,predicate);
     }
 
-
-
     public static void main(String[] args) throws Exception {
         List<String> lines = new Application().execute(new FileInputStream(new File(Constants.FILE_NAME)));
         System.out.println(lines.size());
         String jsonText = new JsonUtils().toJson(new MetricsMapper().map(lines));
-
         FileUtils.writeToDataStore(new File("log.json"),jsonText);
-
     }
-
 }

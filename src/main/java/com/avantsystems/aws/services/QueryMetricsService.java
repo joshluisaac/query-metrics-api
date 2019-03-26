@@ -1,7 +1,5 @@
 package com.avantsystems.aws.services;
 
-
-import com.avantsystems.aws.entities.QueryMetrics;
 import com.avantsystems.aws.components.QueryLog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +9,9 @@ import java.io.*;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class QueryMetricsService {
+public class QueryMetricsService implements IQueryMetricsService {
+
+    private static final Logger LOG = LoggerFactory.getLogger(QueryMetricsService.class);
 
     public QueryLog queryLog;
 
@@ -20,11 +20,7 @@ public class QueryMetricsService {
         this.queryLog = queryLog;
     }
 
-    private static final Logger LOG = LoggerFactory.getLogger(QueryMetrics.class);
-
-
-
-    public List<String>  processStream(final InputStream inputStream, Predicate<String> predicate) throws IOException {
+    public List<String> processStream(final InputStream inputStream, Predicate<String> predicate) throws IOException {
         return queryLog.fetchMatchedRecords(inputStream,predicate);
     }
 

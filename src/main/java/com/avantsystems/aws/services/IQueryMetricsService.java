@@ -1,11 +1,12 @@
 package com.avantsystems.aws.services;
 
-import java.io.File;
+
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.function.Predicate;
 
 public interface IQueryMetricsService {
 
-    public List<String> readFile(final File f, Predicate<String> predicate) throws IOException;
+    public List<String> processStream(final InputStream inputStream, Predicate<String> predicate) throws IOException;
 }
