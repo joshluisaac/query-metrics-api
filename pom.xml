@@ -168,7 +168,7 @@
 							<transformers>
 								<!-- add Main-Class to manifest file -->
 								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>com.avantsystems.aws.QueryMetricsService</mainClass>
+									<mainClass>com.avantsystems.aws.services.QueryMetricsService</mainClass>
 								</transformer>
 							</transformers>
 						</configuration>
