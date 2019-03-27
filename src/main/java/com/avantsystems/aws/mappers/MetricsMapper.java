@@ -23,7 +23,7 @@ public class MetricsMapper {
     }
 
     /**
-     * Transforms log lines into tokens.
+     * Builds a {@link QueryMetrics} from various token fragments.
      *
      * @param columns
      * @return {@link QueryMetrics}

@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class QueryLog {
+public class QueryLogParser {
 
     @Inject
-    public QueryLog() {
+    public QueryLogParser() {
     }
 
     /**
